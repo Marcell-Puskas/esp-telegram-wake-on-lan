@@ -303,9 +303,31 @@ static void handleMessage(telegramMessage message) {
   }
 }
 
+static void checkUser(telegramMessage message) {
+  // if array is empty, skip check
+  if (sizeof allowedUserIds == 0) {
+    handleMessage(message);
+    return;
+  }
+
+  int numberOfAllowedUsers = sizeof allowedUserIds / sizeof *allowedUserIds;
+  for (int i = 0; i < numberOfAllowedUsers; i++)
+  {
+    if (allowedUserIds[i] == message.from_id.toDouble()) {
+      handleMessage(message);
+      return;
+    }
+  }
+
+  // user wasn't found in the list
+  Serial.print("Disallowed user with id:");
+  Serial.println(message.from_id);
+  Serial.println(message.text);
+}
+
 static void handleNewMessages(int num_new_messages) {
   for (int i = 0; i < num_new_messages; i++) {
-    handleMessage(bot.messages[i]);
+    checkUser(bot.messages[i]);
   }
 }
 
