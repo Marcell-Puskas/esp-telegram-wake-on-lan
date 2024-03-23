@@ -2,7 +2,11 @@
 #define __SECRETS_H__
 
 #include <Arduino.h>
-#include <WiFi.h>
+#ifdef ESP8266
+  #include <ESP8266WiFi.h>
+#else
+  #include <WiFi.h>
+#endif
 
 #define SECRET_WIFI_SSID "wifi"
 #define SECRET_WIFI_PASSWORD "password"
