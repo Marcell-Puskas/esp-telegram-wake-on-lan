@@ -1,15 +1,16 @@
-# ESP32 Telegram Wake On Lan
+# ESP Telegram Wake On Lan
 
-Turn your PC on from anywhere using Telegram and ESP32.
+Turn your PC on from anywhere using Telegram and ESP.
 
 ![Telegram chat with the WOL bot waking up a PC](./docs/demo.jpeg)
 
-Performs a Wake On Lan (WOL) on a target device. The ESP32 must be connected to
+Performs a Wake On Lan (WOL) on a target device. The ESP must be connected to
 the same Wi-Fi network as the target device and must
 have internet connection to Telegram servers.
 
-This program was tested on the NodeMCU ESP32-S module, but should work on any ESP32.
-Just make sure you choose the correct libraries on PlatformIO before compiling.
+This program was tested on the *NodeMCU ESP32-S* and the *D1 mini ESP8266* dev boards, but should work on any ESP.
+Just make sure you choose the correct environment on PlatformIO before compiling.
+You may need to customise the configuration for your specific dev board.
 
 ## Setup
 
@@ -20,7 +21,7 @@ You may also need to disable Windows Fast Startup.
 Check this guide for some troubleshooting: https://www.windowscentral.com/software-apps/windows-11/how-to-enable-wake-on-lan-on-windows-11
 
 You should test it with any generic Wake On Lan app for Android or iOS before
-attempting to automated it with an ESP32.
+attempting to automated it with an ESP.
 
 For pinging, the target computer must have an static IP address.
 
@@ -41,7 +42,7 @@ Create a Telegram bot using [BotFather](https://t.me/botfather) and get the API 
 
 Install Platform.io for VSCode and install dependencies.
 
-You may need to install drivers for the ESP32. Mine uses a CP210x USB-to-UART bridge.
+You may need to install drivers for the ESP. Mine uses a CP210x USB-to-UART bridge.
 You can find the drivers here: https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers
 
-Just build the project and upload it to the ESP32.
+Just build the project and upload it to the ESP.

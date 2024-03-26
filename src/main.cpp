@@ -12,7 +12,11 @@
  *******************************************************************/
 
 // WiFi dependencies
-#include <WiFi.h>
+#ifdef ESP8266
+  #include <ESP8266WiFi.h>
+#else
+  #include <WiFi.h>
+#endif
 #include <WiFiClientSecure.h>
 #include <WiFiUDP.h>
 
@@ -23,7 +27,11 @@
 #include <WakeOnLan.h>
 
 // Ping dependencies
-#include <ESP32Ping.h>
+#ifdef ESP8266
+  #include <ESP8266Ping.h>
+#else
+  #include <ESP32Ping.h>
+#endif
 
 #include <list>
 
@@ -32,6 +40,9 @@ char ssid[] =
 char password[] = SECRET_WIFI_PASSWORD;  // Set in secrets.h
 
 String telegram_bot_token = SECRET_TELEGRAM_BOT_TOKEN;  // Set in secrets.h
+#ifdef ESP8266
+  X509List cert(TELEGRAM_CERTIFICATE_ROOT);
+#endif
 
 //------- ---------------------- ------
 
@@ -93,7 +104,11 @@ static void configureWakeOnLan() {
 }
 
 static void configureTelegramBot() {
-  client.setCACert(TELEGRAM_CERTIFICATE_ROOT);
+  #ifdef ESP8266
+    client.setTrustAnchors(&cert);    // Add root certificate for api.telegram.org
+  #else
+    client.setCACert(TELEGRAM_CERTIFICATE_ROOT);
+  #endif
 
   bot.longPoll = 5;
 
