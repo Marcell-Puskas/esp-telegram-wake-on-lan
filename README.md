@@ -31,12 +31,15 @@ Copy src/secrets.example.h to src/secrets.h and replace the values for:
 
 - Wi-Fi network
 - Telegram Bot
+- Allowed user IDs (Optional, if empty, all users are allowed to use the bot)
 - Target device MAC address
 - Target device IP address (Optional, for pings, requires static IP)
 
 ### Telegram Bot
 
 Create a Telegram bot using [BotFather](https://t.me/botfather) and get the API token.
+
+Get your user ID using [userinfobot](https://t.me/userinfobot) if you don't want anyone to be able to use your bot.
 
 ### Development environment
 

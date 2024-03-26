@@ -13,6 +13,13 @@
 
 #define SECRET_TELEGRAM_BOT_TOKEN "12345679:XXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
+// Add allowed users to this list
+// if you leave the list empty, all users will be allowed
+
+double allowedUserIds[] = {
+  //12344567890
+};
+
 struct targetDevice {
   String name;
   byte mac[6];
