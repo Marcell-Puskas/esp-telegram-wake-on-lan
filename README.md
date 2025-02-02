@@ -1,5 +1,8 @@
 # ESP Telegram Wake On Lan
 
+Forked from [esp32-telegram-wake-on-lan](https://github.com/danilofuchs/esp32-telegram-wake-on-lan). \
+Added ESP8266 support, and access list support.
+
 Turn your PC on from anywhere using Telegram and ESP.
 
 ![Telegram chat with the WOL bot waking up a PC](./docs/demo.jpeg)
